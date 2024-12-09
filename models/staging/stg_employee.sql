@@ -1,0 +1,25 @@
+with employee as(
+select
+    * 
+from {{source('raw','employee')}}
+)
+SELECT 
+    BIRTHDATE,
+    BUSINESSENTITYID,
+    CURRENTFLAG,
+    GENDER,
+    HIREDATE,
+    JOBTITLE,
+    LOGINID,
+    MARITALSTATUS,
+    MODIFIEDDATE,
+    NATIONALIDNUMBER,
+    ORGANIZATIONLEVEL,
+    cast(ORGANIZATIONNODE as string) ORGANIZATIONNODE,
+    SALARIEDFLAG,
+    SICKLEAVEHOURS,
+    VACATIONHOURS
+FROM 
+    employee
+where 
+    BUSINESSENTITYID is not null

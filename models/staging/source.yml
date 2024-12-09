@@ -1,0 +1,18 @@
+sources:
+  - name: raw
+    database: ECOMMERCE  
+    schema: raw  
+    tables:
+      - name: customer
+      - name: employee
+      - name: person
+      - name: product
+      - name: productcategory
+      - name: productsubcategory
+      - name: salesorderdetail
+      - name: salesorderheader
+      - name: salesperson
+      - name: store
+
+
+

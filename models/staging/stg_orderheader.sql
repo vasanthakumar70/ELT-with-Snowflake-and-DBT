@@ -1,0 +1,32 @@
+with orderheader as
+(
+    select * from {{source('raw','salesorderheader')}}
+)
+SELECT 
+    ACCOUNTNUMBER,
+    BILLTOADDRESSID,
+    COMMENT,
+    CREDITCARDAPPROVALCODE,
+    CREDITCARDID,
+    CURRENCYRATEID,
+    CUSTOMERID,
+    MODIFIEDDATE,
+    ONLINEORDERFLAG,
+    date(ORDERDATE) as ORDERDATE,
+    date(DUEDATE) as DUEDATE,
+    date(SHIPDATE) as SHIPDATE,
+    PURCHASEORDERNUMBER,
+    REVISIONNUMBER,
+    SALESORDERID,
+    SALESORDERNUMBER,
+    SALESPERSONID,
+    SHIPMETHODID,
+    SHIPTOADDRESSID,
+    STATUS,
+    TERRITORYID,
+    round(SUBTOTAL,2)as SUBTOTAL,
+    round(FREIGHT,2) as FREIGHT,
+    round(TAXAMT,2) as TAXAMT,
+    round(TOTALDUE,2) as TOTALDUE
+FROM 
+   orderheader

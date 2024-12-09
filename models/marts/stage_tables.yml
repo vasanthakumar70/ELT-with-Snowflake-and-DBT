@@ -1,0 +1,10 @@
+stg_sources:
+  - name: dbt
+    database: ECOMMERCE  
+    schema: dbt  
+    views:
+      - name: stg_product
+        columns:
+          - name: name
+            tests:
+              -not null

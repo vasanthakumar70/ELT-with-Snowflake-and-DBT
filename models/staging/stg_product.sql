@@ -1,0 +1,31 @@
+WITH product AS (
+    SELECT * 
+    FROM {{source('raw','product')}}
+)
+SELECT 
+    PRODUCTID,
+    NAME,
+    coalesce(CLASS,'Unknown') as class,
+    coalesce(COLOR,'Unknown') as COLOR,
+    DAYSTOMANUFACTURE,
+    DISCONTINUEDDATE,
+    FINISHEDGOODSFLAG,
+    MAKEFLAG,
+    MODIFIEDDATE,
+    PRODUCTLINE,
+    PRODUCTMODELID,
+    PRODUCTNUMBER,
+    PRODUCTSUBCATEGORYID,
+    REORDERPOINT,
+    SAFETYSTOCKLEVEL,
+    coalesce(date(SELLENDDATE),'2100-01-01') as SELLENDDATE,
+    date(SELLSTARTDATE) as SELLSTARTDATE,
+    coalesce(SIZE,'Unknown') as size,
+    SIZEUNITMEASURECODE,
+    round(LISTPRICE,2) as LISTPRICE,
+    round(STANDARDCOST,2) as STANDARDCOST,
+    STYLE,
+    coalesce(round(WEIGHT,2),0) as WEIGHT,
+    WEIGHTUNITMEASURECODE
+FROM 
+    product

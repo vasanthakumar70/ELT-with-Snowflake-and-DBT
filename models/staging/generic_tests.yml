@@ -1,0 +1,33 @@
+models:
+  - name: stg_customer
+    columns:
+      - name: customerid
+        data_tests:
+          - unique
+          - not_null
+  - name: stg_orderheader
+    columns:
+      - name: salesorderid
+        data_tests:
+          - unique
+          - not_null
+      - name: customerid
+        test:
+          - not_null
+          - relationships:
+              to: ref('stg_customer')
+              field: customerid
+  - name: stg_orderdetails
+    columns:
+      - name: salesorderdetailid
+        data_tests:
+          - not_null
+          - unique
+      - name: salesorderid
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg_orderheader')
+              field: salesorderid
+
+      
